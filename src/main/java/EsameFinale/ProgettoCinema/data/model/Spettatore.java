@@ -4,7 +4,8 @@ import EsameFinale.ProgettoCinema.data.archetype.Model;
 import EsameFinale.ProgettoCinema.data.dto.SpettatoreDto;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,12 +38,25 @@ public class Spettatore implements Model {
   private String surname;
 
   @Column
-  private Date birthdate;
+  private LocalDate birthdate;
 
   @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "spettatore")
   @JsonManagedReference(value = "biglietto")
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
   private Biglietto biglietto;
+
+  public boolean adult(Spettatore spettatore) {
+    int age = Period.between(spettatore.getBirthdate(), LocalDate.now()).getYears();
+    if (age < 18) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  public int age(Spettatore spettatore) {
+    return Period.between(spettatore.getBirthdate(), LocalDate.now()).getYears();
+  }
 
   @Override
   public SpettatoreDto toDto() {

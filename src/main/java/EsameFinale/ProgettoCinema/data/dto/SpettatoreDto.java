@@ -3,7 +3,7 @@ package EsameFinale.ProgettoCinema.data.dto;
 import EsameFinale.ProgettoCinema.data.archetype.Dto;
 import EsameFinale.ProgettoCinema.data.model.Biglietto;
 import EsameFinale.ProgettoCinema.data.model.Spettatore;
-import java.util.Date;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class SpettatoreDto implements Dto {
 
   private String surname;
 
-  private Date birthdate;
+  private LocalDate birthdate;
 
   private Biglietto biglietto;
 

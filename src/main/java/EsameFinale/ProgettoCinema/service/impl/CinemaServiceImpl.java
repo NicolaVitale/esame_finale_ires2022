@@ -1,6 +1,7 @@
 package EsameFinale.ProgettoCinema.service.impl;
 
 import EsameFinale.ProgettoCinema.data.dto.CinemaDto;
+import EsameFinale.ProgettoCinema.data.model.Biglietto;
 import EsameFinale.ProgettoCinema.data.model.Cinema;
 import EsameFinale.ProgettoCinema.data.model.SalaCinematografica;
 import EsameFinale.ProgettoCinema.repository.CinemaRepository;
@@ -26,6 +27,17 @@ public class CinemaServiceImpl implements CinemaService {
   @Override
   public Optional<Cinema> getById(String id) {
     return cinemaRepository.findById(id);
+  }
+
+  @Override
+  public boolean deleteById(String id) {
+    Optional<Cinema> cinema = cinemaRepository.findById(id);
+    if (cinema.isPresent()) {
+      cinemaRepository.deleteById(id);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @Override

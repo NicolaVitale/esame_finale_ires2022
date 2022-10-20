@@ -39,6 +39,9 @@ public class SalaCinematografica implements Model {
   private int numSpectator;
 
   @Column
+  private int maxNumSpectator;
+
+  @Column
   private double incasso;
 
   @ManyToOne
