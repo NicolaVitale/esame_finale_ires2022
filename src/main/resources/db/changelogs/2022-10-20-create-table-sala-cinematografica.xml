@@ -15,6 +15,7 @@
       <column name="id_biglietto_sala" type="varchar(36)"/>
       <column name="nome_sala_cinematografica" type="varchar(100)"/>
       <column name="num_spettatori" type="int"/>
+      <column name="incasso" type="double"/>
       <column name="film" type="varchar(36)"/>
     </createTable>
 

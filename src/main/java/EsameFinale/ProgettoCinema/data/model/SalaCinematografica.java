@@ -38,6 +38,9 @@ public class SalaCinematografica implements Model {
   @Column
   private int numSpectator;
 
+  @Column
+  private double incasso;
+
   @ManyToOne
   @JoinColumn(name = "id_cinema")
   @JsonBackReference(value = "cinema")

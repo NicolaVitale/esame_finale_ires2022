@@ -1,0 +1,48 @@
+package EsameFinale.ProgettoCinema.service.impl;
+
+import EsameFinale.ProgettoCinema.data.dto.CinemaDto;
+import EsameFinale.ProgettoCinema.data.model.Cinema;
+import EsameFinale.ProgettoCinema.data.model.SalaCinematografica;
+import EsameFinale.ProgettoCinema.repository.CinemaRepository;
+import EsameFinale.ProgettoCinema.repository.SalaCinematograficaRepository;
+import EsameFinale.ProgettoCinema.service.CinemaService;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CinemaServiceImpl implements CinemaService {
+
+  private CinemaRepository cinemaRepository;
+  private SalaCinematograficaRepository salaCinematograficaRepository;
+
+  public CinemaServiceImpl(CinemaRepository cinemaRepository,
+      SalaCinematograficaRepository salaCinematograficaRepository) {
+    this.cinemaRepository = cinemaRepository;
+    this.salaCinematograficaRepository = salaCinematograficaRepository;
+  }
+
+  @Override
+  public Optional<Cinema> getById(String id) {
+    return cinemaRepository.findById(id);
+  }
+
+  @Override
+  public List<CinemaDto> getAll() {
+    List<CinemaDto> cinemaDtoList = new ArrayList<>();
+    for (Cinema cinema : cinemaRepository.findAll()) {
+      cinemaDtoList.add(cinema.toDto());
+    }
+    return cinemaDtoList;
+  }
+
+  @Override
+  public double totaleIncasso() {
+    double total = 0;
+    for(SalaCinematografica salaCinematografica : salaCinematograficaRepository.findAll()) {
+      total = total + salaCinematografica.getIncasso();
+    }
+    return total;
+  }
+}
