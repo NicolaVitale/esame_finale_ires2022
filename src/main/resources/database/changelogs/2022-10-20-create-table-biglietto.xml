@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="2022-10-20-create-table-biglietto.xml-001" author="Nicola_Vitale">
+    <comment>CREAZIONE TABELLA BIGLIETTO</comment>
+
+    <createTable tableName="biglietto">
+      <column name="id" type="VARCHAR(36)">
+        <constraints primaryKey="true" primaryKeyName="pk_biglietto"/>
+      </column>
+      <column name="posto_a_sedere" type="varchar(10)"/>
+      <column name="prezzo" type="double"/>
+      <column name="data_nascita" type="data"/>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="sala_cinematografica" baseColumnNames="id_biglietto" constraintName="FK_SALA_BIGLIETTO"
+      referencedTableName="biglietto" referencedColumnNames="id"/>
+
+    <addForeignKeyConstraint baseTableName="spettatore" baseColumnNames="id_biglietto" constraintName="FK_SPETTATORE_BIGLIETTO"
+      referencedTableName="biglietto" referencedColumnNames="id"/>
+
+    <rollback>
+      <dropTable tableName="biglietto"/>
+    </rollback>
+
+  </changeSet>
+
+</databaseChangeLog>

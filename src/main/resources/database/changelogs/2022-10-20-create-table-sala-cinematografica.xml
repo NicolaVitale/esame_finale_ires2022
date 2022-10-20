@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+  <changeSet id="2022-10-20-create-table-sala-cinematografica.xml-001" author="Nicola_Vitale">
+    <comment>CREAZIONE TABELLA SALA CINEMATOGRAFICA</comment>
+
+    <createTable tableName="sala_cinematografica">
+      <column name="id" type="VARCHAR(36)">
+        <constraints primaryKey="true" primaryKeyName="pk_sala_cinematografica"/>
+      </column>
+      <column name="id_cinema" type="varchar(36)"/>
+      <column name="id_biglietto" type="varchar(36)"/>
+      <column name="nome_sala_cinematografica" type="varchar(100)"/>
+      <column name="num_spettatori" type="int"/>
+      <column name="film" type="varchar(36)"/>
+    </createTable>
+
+    <addForeignKeyConstraint baseTableName="film" baseColumnNames="id_sala_cinematografica" constraintName="FK_SALA_CINEMATOGRAFICA"
+      referencedTableName="sala_cinematografica" referencedColumnNames="id"/>
+
+    <rollback>
+      <dropTable tableName="sala_cinematografica"/>
+    </rollback>
+
+  </changeSet>
+
+</databaseChangeLog>
