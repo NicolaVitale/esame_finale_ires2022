@@ -50,6 +50,15 @@ public class CinemaServiceImpl implements CinemaService {
   }
 
   @Override
+  public Cinema save(Cinema cinema) {
+    Cinema cinemaToSave = Cinema.builder()
+        .id(cinema.getId())
+        .salaCinematograficasList(cinema.getSalaCinematograficasList())
+        .build();
+    return cinemaRepository.save(cinemaToSave);
+  }
+
+  @Override
   public double totaleIncasso() {
     double total = 0;
     for(SalaCinematografica salaCinematografica : salaCinematograficaRepository.findAll()) {

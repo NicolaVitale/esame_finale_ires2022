@@ -35,6 +35,21 @@ public class FilmServiceImpl implements FilmService {
   }
 
   @Override
+  public Film save(Film film) {
+    Film filmToSave = Film.builder()
+        .id(film.getId())
+        .title(film.getTitle())
+        .author(film.getAuthor())
+        .producer(film.getProducer())
+        .gender(film.getGender())
+        .minAge(film.getMinAge())
+        .duration(film.getDuration())
+        .salaCinematografica(film.getSalaCinematografica())
+        .build();
+    return filmRepository.save(filmToSave);
+  }
+
+  @Override
   public List<FilmDto> getAll() {
     List<FilmDto> filmDtoList = new ArrayList<>();
     for (Film film : filmRepository.findAll()) {

@@ -14,6 +14,8 @@ public interface SalaCinematograficaService {
 
   List<SalaCinematograficaDto> getAll();
 
+  SalaCinematografica save(SalaCinematografica salaCinematografica);
+
   boolean emptyRoom(String id);
 
   boolean fullRoom(String id);

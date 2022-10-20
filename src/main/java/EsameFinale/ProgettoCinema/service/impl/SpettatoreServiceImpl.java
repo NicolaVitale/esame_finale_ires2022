@@ -1,6 +1,7 @@
 package EsameFinale.ProgettoCinema.service.impl;
 
 import EsameFinale.ProgettoCinema.data.dto.SpettatoreDto;
+import EsameFinale.ProgettoCinema.data.model.Cinema;
 import EsameFinale.ProgettoCinema.data.model.Spettatore;
 import EsameFinale.ProgettoCinema.repository.SpettatoreRepository;
 import EsameFinale.ProgettoCinema.service.SpettatoreService;
@@ -43,6 +44,18 @@ public class SpettatoreServiceImpl implements SpettatoreService {
       spettatoreDtoList.add(spettatore.toDto());
     }
     return spettatoreDtoList;
+  }
+
+  @Override
+  public Spettatore save(Spettatore spettatore) {
+    Spettatore spettatoreToSave = Spettatore.builder()
+        .id(spettatore.getId())
+        .name(spettatore.getName())
+        .surname(spettatore.getSurname())
+        .birthdate(spettatore.getBirthdate())
+        .biglietto(spettatore.getBiglietto())
+        .build();
+    return spettatoreRepository.save(spettatoreToSave);
   }
 
 }

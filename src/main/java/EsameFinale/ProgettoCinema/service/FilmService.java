@@ -11,6 +11,8 @@ public interface FilmService {
 
   boolean deleteById(String id);
 
+  Film save(Film film);
+
   List<FilmDto> getAll();
 
 }

@@ -13,4 +13,6 @@ public interface SpettatoreService {
 
   List<SpettatoreDto> getAll();
 
+  Spettatore save(Spettatore spettatore);
+
 }

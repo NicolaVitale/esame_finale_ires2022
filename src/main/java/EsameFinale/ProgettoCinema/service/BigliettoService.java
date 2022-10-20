@@ -14,6 +14,8 @@ public interface BigliettoService {
 
   List<BigliettoDto> getAll();
 
+  Biglietto save(Biglietto biglietto);
+
   boolean priceReduction(Spettatore spettatore, Biglietto biglietto);
 
 }

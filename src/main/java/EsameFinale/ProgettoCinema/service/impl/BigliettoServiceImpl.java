@@ -2,6 +2,7 @@ package EsameFinale.ProgettoCinema.service.impl;
 
 import EsameFinale.ProgettoCinema.data.dto.BigliettoDto;
 import EsameFinale.ProgettoCinema.data.model.Biglietto;
+import EsameFinale.ProgettoCinema.data.model.Cinema;
 import EsameFinale.ProgettoCinema.data.model.Spettatore;
 import EsameFinale.ProgettoCinema.repository.BigliettoRepository;
 import EsameFinale.ProgettoCinema.repository.SpettatoreRepository;
@@ -48,6 +49,18 @@ public class BigliettoServiceImpl implements BigliettoService {
       bigliettoDtoList.add(biglietto.toDto());
     }
     return bigliettoDtoList;
+  }
+
+  @Override
+  public Biglietto save(Biglietto biglietto) {
+    Biglietto bigliettoToSave = Biglietto.builder()
+        .id(biglietto.getId())
+        .seating(biglietto.getSeating())
+        .price(biglietto.getPrice())
+        .spettatore(biglietto.getSpettatore())
+        .salaCinematografica(biglietto.getSalaCinematografica())
+        .build();
+    return bigliettoRepository.save(bigliettoToSave);
   }
 
   @Override

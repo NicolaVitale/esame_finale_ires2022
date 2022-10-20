@@ -15,4 +15,6 @@ public interface CinemaService {
 
   double totaleIncasso();
 
+  Cinema save(Cinema cinema);
+
 }

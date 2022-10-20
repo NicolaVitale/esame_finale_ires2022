@@ -2,6 +2,7 @@ package EsameFinale.ProgettoCinema.service.impl;
 
 import EsameFinale.ProgettoCinema.data.dto.SalaCinematograficaDto;
 import EsameFinale.ProgettoCinema.data.model.Biglietto;
+import EsameFinale.ProgettoCinema.data.model.Cinema;
 import EsameFinale.ProgettoCinema.data.model.SalaCinematografica;
 import EsameFinale.ProgettoCinema.data.model.Spettatore;
 import EsameFinale.ProgettoCinema.repository.SalaCinematograficaRepository;
@@ -43,6 +44,20 @@ public class SalaCinematograficaImpl implements SalaCinematograficaService {
       salaCinematograficaDtoList.add(salaCinematografica.toDto());
     }
     return salaCinematograficaDtoList;
+  }
+
+  @Override
+  public SalaCinematografica save(SalaCinematografica salaCinematografica) {
+    SalaCinematografica salaToSave = SalaCinematografica.builder()
+        .id(salaCinematografica.getId())
+        .numSpectator(salaCinematografica.getNumSpectator())
+        .maxNumSpectator(salaCinematografica.getMaxNumSpectator())
+        .incasso(salaCinematografica.getIncasso())
+        .cinema(salaCinematografica.getCinema())
+        .film(salaCinematografica.getFilm())
+        .bigliettoList(salaCinematografica.getBigliettoList())
+        .build();
+    return salaCinematograficaRepository.save(salaToSave);
   }
 
   @Override
