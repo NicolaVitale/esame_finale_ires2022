@@ -13,13 +13,14 @@
       </column>
       <column name="posto_a_sedere" type="varchar(10)"/>
       <column name="prezzo" type="double"/>
-      <column name="data_nascita" type="data"/>
+      <column name="data_nascita" type="date"/>
+      <column name="id_spettatore" type="varchar(36)"/>
     </createTable>
 
-    <addForeignKeyConstraint baseTableName="sala_cinematografica" baseColumnNames="id_biglietto" constraintName="FK_SALA_BIGLIETTO"
+    <addForeignKeyConstraint baseTableName="sala_cinematografica" baseColumnNames="id_biglietto_sala" constraintName="FK_SALA_BIGLIETTO"
       referencedTableName="biglietto" referencedColumnNames="id"/>
 
-    <addForeignKeyConstraint baseTableName="spettatore" baseColumnNames="id_biglietto" constraintName="FK_SPETTATORE_BIGLIETTO"
+    <addForeignKeyConstraint baseTableName="spettatore" baseColumnNames="id_biglietto_spettatore" constraintName="FK_SPETTATORE_BIGLIETTO"
       referencedTableName="biglietto" referencedColumnNames="id"/>
 
     <rollback>

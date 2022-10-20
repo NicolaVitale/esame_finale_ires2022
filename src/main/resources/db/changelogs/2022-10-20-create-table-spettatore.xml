@@ -13,8 +13,8 @@
       </column>
       <column name="nome" type="varchar(100)"/>
       <column name="cognome" type="varchar(100)"/>
-      <column name="data_nascita" type="data"/>
-      <column name="id_biglietto" type="varchar(36)"/>
+      <column name="data_nascita" type="date"/>
+      <column name="id_biglietto_spettatore" type="varchar(36)"/>
     </createTable>
 
     <rollback>
